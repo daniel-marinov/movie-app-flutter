@@ -12,9 +12,19 @@ class _WatchListState extends State<WatchList> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: MallikaAppBar5(
-      heading: "Your Watch List",
-      hasIcon: false,
-    ));
+      appBar: MallikaAppBar5(
+        heading: "Your Watch List",
+        hasIcon: false,
+        hasSingOut: false,
+      ),
+      body: ListView.builder(
+        itemCount: 3,
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            onTap: () {},
+          );
+        },
+      ),
+    );
   }
 }

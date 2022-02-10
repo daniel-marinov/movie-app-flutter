@@ -2,6 +2,8 @@
 
 import 'dart:ui';
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:task/models/movies.dart';
 import 'package:task/screens/watch_list.dart';
@@ -148,14 +150,7 @@ class DetailPage extends StatelessWidget {
                               flex: 4,
                               child: ElevatedButton(
                                   // TODO: uncomment to go to Screen
-                                  onPressed: () {
-                                    // Navigator.push(
-                                    //   context,
-                                    //   MaterialPageRoute(
-                                    //       builder: (context) =>
-                                    //           FavouritesPage()),
-                                    // );
-                                  },
+                                  onPressed: () {},
                                   child: const Text(
                                     "Add to Favourites",
                                     style:

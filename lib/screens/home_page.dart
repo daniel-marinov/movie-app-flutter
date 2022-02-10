@@ -24,7 +24,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     MovieService().getMovies().then((value) {
       setState(() {
-        _movies.addAll(value);
+        _movies = [..._movies, ...value];
       });
     });
     super.initState();
@@ -32,36 +32,34 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // this if statement is absolute shit, but it stopped working randomly
-    if (_movies.isNotEmpty) {
-      return Scaffold(
-        appBar: MallikaAppBar5(
-          heading: "Movies",
-          hasIcon: true,
-        ),
-        body: ListView.builder(
-          itemCount: _movies.length,
-          itemBuilder: (context, index) {
-            return GestureDetector(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => DetailPage(
-                              movie: _movies[index],
-                            )));
-              },
-              child: RecipeItemMallika1(
-                title: _movies[index].title,
-                subtitle: _movies[index].genres.toString(),
-                image: _movies[index].posterurl,
-              ),
-            );
-          },
-        ),
-      );
-    } else {
-      return Center(child: CircularProgressIndicator());
-    }
+    return Scaffold(
+      appBar: MallikaAppBar5(
+        heading: "Movies",
+        hasIcon: true,
+        hasSingOut: true,
+      ),
+      body: ListView.builder(
+        itemCount: _movies.length,
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DetailPage(
+                    movie: _movies[index],
+                  ),
+                ),
+              );
+            },
+            child: RecipeItemMallika1(
+              title: _movies[index].title,
+              subtitle: _movies[index].genres.toString(),
+              image: _movies[index].posterurl,
+            ),
+          );
+        },
+      ),
+    );
   }
 }
